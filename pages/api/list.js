@@ -5,11 +5,10 @@ export default async function handler(request, response) {
       const { database } = await connectToDatabase();
       const collection = database.collection(process.env.NEXT_ATLAS_COLLECTION);
 
-      // Включаем необходимые поля
       const results = await collection.find({})
          .project({
-               username: 1, // Включить поле name
-               password: 1, // Включить поле email
+               username: 1, 
+               password: 1, 
          })
          .limit(10)
          .toArray();
