@@ -1,0 +1,290 @@
+@import '../utils/variables.scss';
+@import '../utils/mixins.scss';
+
+.todo-wrapper {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   max-width: 33.75rem;
+   gap: 1.5rem;
+
+   @include mq (medium) {
+      gap: 1rem;
+   }
+}
+
+.header-wrapper {
+   position: absolute; 
+   left: 50%; 
+   transform: translate(-50%, -50%);
+   text-align: center;
+   width: calc(100% - 2rem);
+   max-width: 33.75rem;
+   padding: 1rem 1.5rem;
+   z-index: 10; 
+
+   @include mq (medium) {
+      padding: 1rem 1.25rem;
+   }
+}
+
+.header-wrapper h2 {
+   margin: 0;
+   font-size: 1.5rem;
+   font-weight: 700;
+   color: $text-color-1;
+
+   @include mq (medium) {
+      font-size: 1.25rem;
+   }
+}
+
+.todo-add input[type="text"] {
+   all: unset; 
+   display: block;
+   width: 100%;
+   font: inherit;
+   color: inherit; 
+   border: none;
+   caret-color: $primary-1;
+}
+
+.todo-add input[type="submit"] {
+   color: $background-color-2; 
+   font-size: 0.875rem;
+   font-style: normal;
+   font-weight: 700;
+   line-height: normal;
+   letter-spacing: -0.01213rem;
+   text-transform: uppercase;
+   background-color: $primary-1; 
+   border: none;
+   cursor: pointer;
+   border-radius: 0.3125rem; 
+   padding: 0.75rem 1.5rem; 
+   transition: background-color 0.2s, box-shadow 0.2s;
+   box-shadow: 0px 4px 6px rgba(58, 124, 253, 0.3); 
+
+   @include mq (medium) {
+      font-size: 0.75rem; 
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem; 
+      box-shadow: 0px 3px 5px rgba(58, 124, 253, 0.2); 
+   }
+}
+
+.todo-add input[type="submit"]:hover,
+.todo-add input[type="submit"]:focus-visible {
+   background-color: $primary-2; 
+   box-shadow: 0px 6px 8px rgba(58, 124, 253, 0.5); 
+
+   @include mq (medium) {
+      box-shadow: 0px 4px 6px rgba(58, 124, 253, 0.4); 
+   }
+}
+
+.todo-add input[type="submit"]:active {
+   background-color: $background-color-4; 
+   box-shadow: 0px 2px 4px rgba(58, 124, 253, 0.3); 
+   transform: scale(0.98); 
+
+   @include mq (medium) {
+      transform: scale(0.95); 
+   }
+}
+
+.todo-add,
+.todo-list,
+.buttons-wrapper {
+   border-radius: 0.3125rem;
+   box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
+   background-color: $background-color-2;
+}
+
+.todo-item,
+.todo-add, 
+.buttons-wrapper {
+   display: flex;
+   flex-direction: row;
+   border-bottom: 1px solid $border-color-2; 
+   padding: 1.5rem;
+
+   @include mq (medium) {
+      padding: 1rem 1.25rem;
+   }
+}
+
+.todo-item,
+.todo-add {
+   justify-content: space-between;
+   align-items: center;
+   gap: 1.5rem;
+
+   @include mq (medium) {
+      gap: 1rem;
+   }
+}
+
+.todo-list ul {
+   max-height: 40vh;
+   overflow-y: auto; 
+}
+
+.todo-list ul::-webkit-scrollbar {
+   width: 8px; 
+}
+
+.todo-list ul::-webkit-scrollbar-thumb {
+   background: $background-color-5; 
+   border-radius: 4px; 
+}
+
+.todo-list ul::-webkit-scrollbar-thumb:hover {
+   background: $background-color-3; 
+}
+
+.todo-list ul::-webkit-scrollbar-track {
+   background: $background-color-2; 
+}
+
+.task-label {
+   color: $text-color-1;
+   font-family: "Josefin Sans", sans-serif;
+   font-size: 1.125rem;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   letter-spacing: -0.01563rem;
+   transition: .2s ease;
+
+   @include mq (medium) {
+      font-size: 0.75rem;
+      letter-spacing: -0.01044rem;
+   }
+}
+
+.task-label.completed {
+   color: $text-color-4;
+   text-decoration: line-through;
+}
+
+.task-wrapper {
+   display: flex;
+   flex-direction: row;
+   gap: 1.5rem;
+
+   @include mq (medium) {
+      gap: 1rem;
+   }
+}
+
+.task-checkbox,
+.task-label {
+   cursor: pointer;
+}
+
+.delete-btn {
+   @include width-height(1.125rem, 1.125rem);
+   border: none;
+   background: url(../../public/icons/delete.svg);
+   background-repeat: no-repeat;
+   background-position: center center;
+   cursor: pointer;
+   flex-shrink: 0;
+
+   @include mq (medium) {
+      @include width-height(0.75rem, 0.75rem);
+   }
+}
+
+.delete-btn svg {
+   @include width-height(100%, 100%);
+}
+
+.bottom-wrapper {
+   padding: 1.5rem 1rem;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+   @include mq (medium) {
+      padding: 1rem;
+   }
+}
+
+.tasks-left,
+.clear-tasks span {
+   color: $text-color-5;
+   font-size: 0.875rem;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   letter-spacing: -0.01213rem;
+   transition: .2s ease;
+
+   @include mq (medium) {
+      font-size: 0.75rem;
+      letter-spacing: -0.01044rem;
+   }
+}
+
+.clear-tasks {
+   border: none;
+   background: transparent;
+   cursor: pointer;
+   padding: 0;
+}
+
+.clear-tasks span:hover,
+.clear-tasks span:focus-visible {
+   color: $text-color-1;
+}
+
+.remove {
+   display: none;
+}
+
+.message {
+   color: $text-color-5;
+   font-size: 0.875rem;
+   font-style: normal;
+   font-weight: 700;
+   line-height: normal;
+   letter-spacing: -0.01213rem;
+   padding: 1.5rem 1rem;
+
+   @include mq (medium) {
+      font-size: 0.75rem;
+      letter-spacing: -0.01044rem;
+      padding: 1rem;
+   }
+}
+
+.buttons-wrapper {
+   justify-content: center;
+   align-items: center;
+   gap: 1.19rem;
+}
+
+.buttons-wrapper button {
+   border: none;
+   background-color: transparent;
+}
+
+.buttons-wrapper span {
+   color: $text-color-5;
+   font-size: 0.875rem;
+   font-style: normal;
+   font-weight: 700;
+   line-height: normal;
+   letter-spacing: -0.01213rem;
+}
+
+.buttons-wrapper span:hover,
+.buttons-wrapper span:focus-visible {
+   color: $text-color-1;
+}
+
+.button-active span {
+   color: $primary-1;
+}
