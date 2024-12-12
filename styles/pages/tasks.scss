@@ -52,6 +52,7 @@
 .todo-add input[type="submit"] {
    all: unset;
    box-sizing: border-box;
+   white-space: nowrap;
    color: $background-color-2; 
    font-size: 0.875rem;
    font-style: normal;
