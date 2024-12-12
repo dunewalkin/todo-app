@@ -17,7 +17,6 @@ const TaskList = ({ tasks, setTasks, filter }) => {
                task.name === taskName ? { ...task, completed: newStatus } : task
                )
             );
-            console.log(`Task "${taskName}" status updated to ${newStatus}`);
          } else {
             console.error(`Failed to update task status: ${taskName}`);
          }
@@ -38,7 +37,6 @@ const TaskList = ({ tasks, setTasks, filter }) => {
       
          if (res.ok) {
             setTasks((prevTasks) => prevTasks.filter(task => task.name !== taskName)); 
-            console.log(`Task "${taskName}" deleted successfully`);
          } else {
             console.error(`Failed to delete task: ${taskName}`);
          }
@@ -51,7 +49,9 @@ const TaskList = ({ tasks, setTasks, filter }) => {
       if (filter === 'completed') return task.completed;
       if (filter === 'active') return !task.completed;
       return true; 
-   }).sort((a, b) => a.completed - b.completed);
+   })
+   // .sort((a, b) => a.completed - b.completed)
+   ;
 
    
    return (
