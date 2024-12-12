@@ -56,24 +56,36 @@ const TaskList = ({ tasks, setTasks, filter }) => {
    
    return (
       <ul>
-         {filteredTasks.map((task, index) => (
-            <li key={index} className='todo-item'>
-               <div className='task-wrapper'>
-                  <input
-                     type="checkbox"
-                     checked={task.completed}
-                     className='task-checkbox'
-                     onChange={(e) => handleToggleTask(task.name, e.target.checked)} 
-                  />
-                  <label className={`task-label ${task.completed ? 'completed' : ''}`}>
-                     {task.name}
-                  </label>
-               </div>
-               <button className='delete-btn' onClick={() => handleDeleteTask(task.name)}></button>
-            </li>
-         ))}
+         {filteredTasks.map((task, index) => {
+            const taskId = `task-${index}`; 
+            return (
+               <li key={index} className='todo-item'>
+                  <div className='task-wrapper'>
+                     <input
+                        id={taskId} 
+                        type="checkbox"
+                        checked={task.completed}
+                        className='task-checkbox'
+                        onChange={(e) => handleToggleTask(task.name, e.target.checked)} 
+                     />
+                     <label 
+                        htmlFor={taskId}
+                        className={`task-label ${task.completed ? 'completed' : ''}`}
+                     >
+                        {task.name}
+                     </label>
+                  </div>
+                  <button 
+                     className='delete-btn' 
+                     onClick={() => handleDeleteTask(task.name)}
+                     aria-label={`Delete ${task.name}`}>
+                  </button>
+               </li>
+            );
+         })}
       </ul> 
    );
+   
 };
 
 export default TaskList;
